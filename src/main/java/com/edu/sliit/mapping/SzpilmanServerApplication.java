@@ -11,6 +11,6 @@ public class SzpilmanServerApplication {
 }
 
 /**
- create database Thogakade;
- use Thogakade;
+	 create database Thogakade;
+	 use Thogakade;
  */
