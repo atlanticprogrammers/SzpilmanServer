@@ -14,3 +14,4 @@ public class SzpilmanServerApplication {
 	 create database Thogakade;
 	 use Thogakade;
  */
+// https://www.codejava.net/frameworks/hibernate/hibernate-many-to-many-association-with-extra-columns-in-join-table-example

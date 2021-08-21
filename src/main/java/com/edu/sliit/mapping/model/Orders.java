@@ -1,10 +1,9 @@
 package com.edu.sliit.mapping.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Orders", catalog = "Thogakade")
@@ -18,6 +17,9 @@ public class Orders {
 
     @Column(name = "CustID")
     private String customerId;
+
+    @OneToMany(mappedBy = "orders")
+    private Set<OrderDetail> userGroups = new HashSet<OrderDetail>();
 
     public Orders() {}
 
@@ -49,6 +51,14 @@ public class Orders {
 
     public void setCustomerId(String customerId) {
         this.customerId = customerId;
+    }
+
+    public Set<OrderDetail> getUserGroups() {
+        return userGroups;
+    }
+
+    public void setUserGroups(Set<OrderDetail> userGroups) {
+        this.userGroups = userGroups;
     }
 
     @Override
