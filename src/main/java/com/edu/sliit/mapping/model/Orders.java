@@ -9,24 +9,24 @@ import java.util.Set;
 @Table(name = "Orders", catalog = "Thogakade")
 public class Orders {
     @Id
-    @Column(name = "OrderID")
+    @Column(name = "OrderId")
     private String orderId;
 
     @Column(name = "OrderDate")
     private Date orderDate;
 
-    @Column(name = "CustID")
-    private String customerId;
-
-    @OneToMany(mappedBy = "orders")
+    @OneToMany(
+            mappedBy = "orders",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     private Set<OrderDetail> userGroups = new HashSet<OrderDetail>();
 
     public Orders() {}
 
-    public Orders(String orderId, Date orderDate, String customerId) {
+    public Orders(String orderId, Date orderDate) {
         this.orderId = orderId;
         this.orderDate = orderDate;
-        this.customerId = customerId;
     }
 
     public String getOrderId() {
@@ -45,14 +45,6 @@ public class Orders {
         this.orderDate = orderDate;
     }
 
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
-
     public Set<OrderDetail> getUserGroups() {
         return userGroups;
     }
@@ -66,7 +58,7 @@ public class Orders {
         return "Orders{" +
                 "orderId='" + orderId + '\'' +
                 ", orderDate=" + orderDate +
-                ", customerId='" + customerId + '\'' +
+                ", userGroups=" + userGroups +
                 '}';
     }
 }

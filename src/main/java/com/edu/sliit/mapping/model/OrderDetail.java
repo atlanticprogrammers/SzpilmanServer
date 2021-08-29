@@ -5,16 +5,16 @@ import javax.persistence.*;
 @Entity
 @Table(name = "OrderDetail", catalog = "Thogakade")
 public class OrderDetail {
-    @Id
-    @Column(name = "TestId")
-    private String testId;
+
+    @EmbeddedId
+    private OrderDetailId id;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "OrderID")
+    @MapsId("orderId")
     private Orders orders;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ItemCode")
+    @MapsId("itemCode")
     private Item item;
 
     @Column(name = "OrderQTY")
@@ -55,14 +55,6 @@ public class OrderDetail {
 
     public void setDiscount(int discount) {
         this.discount = discount;
-    }
-
-    public String getTestId() {
-        return testId;
-    }
-
-    public void setTestId(String testId) {
-        this.testId = testId;
     }
 
     @Override

@@ -24,7 +24,11 @@ public class Item {
     @Column(name = "QtyOnHand")
     private int qtyOnHand;
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(
+            mappedBy = "item",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     private Set<OrderDetail> userGroups = new HashSet<OrderDetail>();
 
     public Item() {}
