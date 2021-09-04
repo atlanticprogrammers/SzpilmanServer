@@ -20,7 +20,7 @@ public class Orders {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private Set<OrderDetail> userGroups = new HashSet<OrderDetail>();
+    private Set<OrderDetail> orderDetailSet = new HashSet<OrderDetail>();
 
     public Orders() {}
 
@@ -45,12 +45,12 @@ public class Orders {
         this.orderDate = orderDate;
     }
 
-    public Set<OrderDetail> getUserGroups() {
-        return userGroups;
+    public Set<OrderDetail> getOrderDetailSet() {
+        return orderDetailSet;
     }
 
-    public void setUserGroups(Set<OrderDetail> userGroups) {
-        this.userGroups = userGroups;
+    public void setOrderDetailSet(Set<OrderDetail> orderDetailSet) {
+        this.orderDetailSet = orderDetailSet;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class Orders {
         return "Orders{" +
                 "orderId='" + orderId + '\'' +
                 ", orderDate=" + orderDate +
-                ", userGroups=" + userGroups +
+                ", orderDetailSet=" + orderDetailSet +
                 '}';
     }
 }

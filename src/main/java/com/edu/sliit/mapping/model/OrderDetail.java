@@ -1,5 +1,6 @@
 package com.edu.sliit.mapping.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
@@ -11,10 +12,12 @@ public class OrderDetail {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @MapsId("orderId")
+    @JsonIgnore
     private Orders orders;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @MapsId("itemCode")
+    @JsonIgnore
     private Item item;
 
     @Column(name = "OrderQTY")
@@ -55,6 +58,14 @@ public class OrderDetail {
 
     public void setDiscount(int discount) {
         this.discount = discount;
+    }
+
+    public OrderDetailId getId() {
+        return id;
+    }
+
+    public void setId(OrderDetailId id) {
+        this.id = id;
     }
 
     @Override
