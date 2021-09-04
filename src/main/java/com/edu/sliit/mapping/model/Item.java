@@ -29,7 +29,7 @@ public class Item {
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
-    private Set<OrderDetail> userGroups = new HashSet<OrderDetail>();
+    private Set<OrderDetail> orderDetailSet = new HashSet<OrderDetail>();
 
     public Item() {}
 
@@ -81,12 +81,12 @@ public class Item {
         this.qtyOnHand = qtyOnHand;
     }
 
-    public Set<OrderDetail> getUserGroups() {
-        return userGroups;
+    public void setOrderDetailSet(Set<OrderDetail> orderDetailSet) {
+        this.orderDetailSet = orderDetailSet;
     }
 
-    public void setUserGroups(Set<OrderDetail> userGroups) {
-        this.userGroups = userGroups;
+    public Set<OrderDetail> getOrderDetailSet() {
+        return orderDetailSet;
     }
 
     @Override
@@ -97,20 +97,20 @@ public class Item {
                 ", packSize='" + packSize + '\'' +
                 ", unitPrice=" + unitPrice +
                 ", qtyOnHand=" + qtyOnHand +
-                ", userGroups=" + userGroups +
+                ", orderDetailSet=" + orderDetailSet +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Item)) return false;
         Item item = (Item) o;
-        return Double.compare(item.unitPrice, unitPrice) == 0 && qtyOnHand == item.qtyOnHand && itemCode.equals(item.itemCode) && description.equals(item.description) && packSize.equals(item.packSize) && userGroups.equals(item.userGroups);
+        return Double.compare(item.unitPrice, unitPrice) == 0 && qtyOnHand == item.qtyOnHand && Objects.equals(itemCode, item.itemCode) && Objects.equals(description, item.description) && Objects.equals(packSize, item.packSize) && Objects.equals(orderDetailSet, item.orderDetailSet);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(itemCode, description, packSize, unitPrice, qtyOnHand, userGroups);
+        return Objects.hash(itemCode, description, packSize, unitPrice, qtyOnHand, orderDetailSet);
     }
 }
