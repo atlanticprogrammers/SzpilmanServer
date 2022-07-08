@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "OrderDetail", catalog = "Thogakade")
+@Table(name = "OrderDetail", catalog = "Thogakade2")
 public class OrderDetail {
 
     @EmbeddedId
